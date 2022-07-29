@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Tasks } from "../../types/Tasks";
 import { Container, List } from "./styles";
-import { DeleteButton } from "../Buttons";
 
 type Props = {
   task: Tasks;
@@ -21,7 +20,6 @@ const Item = ({ task }: Props) => {
           />
           {task.name}
         </span>
-        <DeleteButton />
       </List>
     </Container>
   );

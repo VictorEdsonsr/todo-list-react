@@ -10,14 +10,8 @@ export const Container = styled.div`
 
 export const List = styled.li`
   font-size: 20px;
-  background: #2c2c2c;
-  padding: 15px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
   text-decoration: ${({ check }: ListProps) =>
     check ? "line-through" : "initial"};
-  justify-content: space-between;
 
   span {
     align-items: center;

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Tasks } from "./types/Tasks";
 import { Container, List } from "./App.style";
-import Item from "./Components/Task";
+import Item from "./Components/Item";
 import AddTask from "./Components/AddTask";
+import { DeleteButton } from "./Components/Buttons";
 
 const App = () => {
   const [list, setList] = useState<Tasks[]>([
@@ -10,16 +11,28 @@ const App = () => {
     { id: 2, name: "Estudar", done: false },
   ]);
 
+  useEffect(() => {
+    const tarefasJSON = JSON.stringify(list);
+    localStorage.setItem("@task", tarefasJSON);
+  }, [list]);
+
+  useEffect(() => {
+    const localJSON = localStorage.getItem("@task");
+    const local = JSON.parse(localJSON!);
+
+    setList([...local]);
+  }, []);
+
   const handleAddTask = (taskName: string) => {
-    let newList = [...list];
+    setList([...list, { id: list.length + 1, name: taskName, done: false }]);
+  };
 
-    newList.push({
-      id: list.length + 1,
-      name: taskName,
-      done: false,
+  const handleDeleteTask = (taskName: Tasks) => {
+    const find = list.filter((t) => {
+      return t !== taskName;
     });
-
-    setList(newList);
+    console.log(find);
+    setList(find);
   };
 
   return (
@@ -28,7 +41,13 @@ const App = () => {
       <AddTask onSub={handleAddTask} />
       <List>
         {list.map((Tasks, index) => (
-          <Item key={index} task={Tasks} />
+          <div>
+            <Item key={index} task={Tasks} />
+            <DeleteButton
+              taskName={Tasks}
+              click={() => handleDeleteTask(Tasks)}
+            />
+          </div>
         ))}
       </List>
     </Container>

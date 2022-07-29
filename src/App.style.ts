@@ -19,4 +19,18 @@ export const Container = styled.div`
 export const List = styled.ul`
   padding: 20px;
   list-style: none;
+
+  div {
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #2c2c2c;
+    margin: 15px;
+    flex: 1;
+
+    button {
+      padding-right: 10px;
+    }
+  }
 `;
