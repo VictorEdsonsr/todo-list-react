@@ -7,7 +7,7 @@ import { DeleteButton } from "./Components/Buttons";
 
 const App = () => {
   const [list, setList] = useState<Tasks[]>([
-    { id: 1, name: "fazer compras", done: false },
+    { id: 1, name: "Fazer compras", done: false },
     { id: 2, name: "Estudar", done: false },
   ]);
 
