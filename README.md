@@ -1,9 +1,6 @@
 <h1 align='center'>To-Do list com react e typescript</1>
 <br/>
 <br/>
-<img src='print.png'>
-
-<br/>
 
 <h2 align='center'>Descrição</h2>
 
