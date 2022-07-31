@@ -13,16 +13,16 @@ const App = () => {
 
   useEffect(() => {
     const tarefasJSON = JSON.stringify(list);
+    console.log(tarefasJSON);
     localStorage.setItem("@task", tarefasJSON);
   }, [list]);
 
   useEffect(() => {
-    const localJSON = localStorage.getItem("@task");
-    const local = JSON.parse(localJSON!);
-
-    setList([...local]);
+    const taskStorage = localStorage.getItem("@task");
+    if (taskStorage) {
+      setList((task) => [...task, ...JSON.parse(taskStorage)]);
+    }
   }, []);
-
   const handleAddTask = (taskName: string) => {
     setList([...list, { id: list.length + 1, name: taskName, done: false }]);
   };
